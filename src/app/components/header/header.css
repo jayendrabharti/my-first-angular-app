@@ -1,0 +1,17 @@
+nav {
+  background: #444;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+span {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+}

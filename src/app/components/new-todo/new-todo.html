@@ -1,0 +1,60 @@
+<button
+  class="px-2 py-1 bg-zinc-800 text-zinc-50 rounded-md active:scale-90 hover:bg-zinc-700 transition-all duration-150 ml-auto flex"
+  (click)="adding.set(true)"
+>
+  Add ToDo
+</button>
+
+@if(adding()){
+<div
+  class="w-full h-full fixed top-0 left-0 bg-zinc-950/50 flex items-center justify-center"
+  (click)="adding.set(false)"
+>
+  <div
+    class="bg-zinc-100 rounded-lg shadow-lg p-6 min-w-[300px] flex flex-col gap-2"
+    (click)="$event.stopPropagation()"
+  >
+    <span class="text-lg font-semibold text-zinc-800 mb-4"
+      >Adding new ToDo</span
+    >
+    <label class="text-sm font-medium text-gray-700" for="newName"
+      >New Name</label
+    >
+    <input
+      id="title"
+      name="title"
+      [(ngModel)]="title"
+      placeholder="Enter title"
+      type="text"
+      class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    <label class="text-sm font-medium text-gray-700" for="newName"
+      >Description</label
+    >
+    <input
+      id="description"
+      name="description"
+      [(ngModel)]="description"
+      placeholder="Enter description"
+      type="text"
+      class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+
+    <div class="flex gap-3 mt-2 ml-auto">
+      <button
+        class="px-4 py-2 bg-zinc-400 text-zinc-800 rounded-md hover:bg-zinc-500 transition"
+        (click)="adding.set(false)"
+      >
+        Cancel
+      </button>
+      <button
+        class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+        (click)="add()"
+      >
+        Add
+      </button>
+    </div>
+  </div>
+</div>
+}

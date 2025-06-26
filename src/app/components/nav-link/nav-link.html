@@ -1,0 +1,5 @@
+<a [routerLink]="path()">
+  <button [attr.current]="isActive" [style.opacity]="isActive ? '1' : '0.5'">
+    {{title()}}
+  </button>
+</a>

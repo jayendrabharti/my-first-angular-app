@@ -1,0 +1,31 @@
+<div class="flex items-center space-x-4 relative">
+  <span
+    class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold text-lg active:scale-95 transition-all duration-100 cursor-pointer"
+    (click)="toggleDropdown()"
+  >
+    {{ auth.userData()?.email?.charAt(0)?.toUpperCase() }}
+  </span>
+  <div
+    class="absolute top-full right-1/2 w-max bg-zinc-900 rounded-xl p-4 transition-all duration-150 flex flex-col gap-2 border-2 border-zinc-600"
+    [ngClass]="openDropdown() ? 'scale-100 opacity-100' : 'scale-0 translate-x-1/2 -translate-y-1/2 opacity-0'"
+    (mouseleave)="openDropdown.set(false)"
+  >
+    <div class="flex flex-col">
+      <span class="text-white">{{ auth.userData()?.name }}</span>
+      <span class="text-zinc-300 text-sm">{{ auth.userData()?.email }}</span>
+    </div>
+
+    <a
+      [routerLink]="'/account'"
+      class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded transition cursor-pointer"
+      >Account Settings</a
+    >
+
+    <button
+      class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded transition cursor-pointer"
+      (click)="auth.logout()"
+    >
+      Log Out
+    </button>
+  </div>
+</div>

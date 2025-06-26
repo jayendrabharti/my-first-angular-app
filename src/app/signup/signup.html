@@ -1,0 +1,54 @@
+<div class="login-container">
+  <h2 class="text-2xl font-extrabold">Sign up</h2>
+  @if (auth.userData()) {
+  <p class="text-green-600 mb-4">
+    You are already logged in as
+    <span class="font-semibold">{{ auth.userData()?.email }}</span>!
+  </p>
+  <button
+    class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+    (click)="auth.logout()"
+  >
+    Log Out
+  </button>
+  }@else {
+  <form class="login-form">
+    <label>Name</label>
+    <input
+      name="name"
+      [(ngModel)]="name"
+      placeholder="Enter your name"
+      type="text"
+    />
+    <label>Email</label>
+    <input
+      name="email"
+      [(ngModel)]="email"
+      placeholder="Enter your email"
+      type="email"
+    />
+    <label>Password</label>
+    <input
+      name="password"
+      [(ngModel)]="password"
+      placeholder="Enter your password"
+      type="password"
+      autocomplete="off"
+    />
+    <label>Confirm Password</label>
+    <input
+      name="confirm-password"
+      [(ngModel)]="confirmPassword"
+      placeholder="Re-Enter your password"
+      type="password"
+      autocomplete="off"
+    />
+    <span class="error">{{validationErrorMessage()}}</span>
+    <button (click)="handleSignup()">Log In</button>
+    <span
+      >Already have an account?
+      <a [routerLink]="'/login'">Login</a>
+    </span>
+  </form>
+  }
+</div>

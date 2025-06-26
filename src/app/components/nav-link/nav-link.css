@@ -1,0 +1,21 @@
+button {
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0;
+  background: #666;
+  color: white;
+  border: 2px solid black;
+  transition-duration: 150ms;
+  opacity: 0.5;
+}
+button:hover {
+  background: #000;
+}
+button:active {
+  scale: 0.95;
+}
+button[current="true"] {
+  background: #000;
+  color: #fff;
+  border-color: #999;
+}

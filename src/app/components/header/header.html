@@ -1,0 +1,15 @@
+<nav>
+  <span>My Application</span>
+  <div class="nav-links">
+    <app-nav-link title="Home" path="/"></app-nav-link>
+    <app-nav-link title="About" path="/about"></app-nav-link>
+    <app-nav-link title="Dashboard" path="/dashboard"></app-nav-link>
+    <app-nav-link title="Todos" path="/todos"></app-nav-link>
+    @if(!auth.userData()){
+    <app-nav-link title="Log In" path="/login"></app-nav-link>
+    <app-nav-link title="Sign up" path="/signup"></app-nav-link>
+    }@else {
+    <app-user-button />
+    }
+  </div>
+</nav>
