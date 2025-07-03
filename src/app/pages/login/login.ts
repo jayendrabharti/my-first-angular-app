@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Auth } from '../services/auth';
+import { Auth } from '../../services/auth';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -13,6 +13,14 @@ export class Login {
   auth = inject(Auth);
   email = signal<string>('');
   password = signal<string>('');
+  loggedIn = false;
+
+  constructor() {
+    this.auth.checkLoggedIn().then((loggedIn) => {
+      this.loggedIn = loggedIn;
+    });
+  }
+
   handleLogin() {
     this.auth.login(this.email(), this.password());
   }

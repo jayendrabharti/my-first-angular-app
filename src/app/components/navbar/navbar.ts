@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { NavLink } from '../nav-link/nav-link';
-import { Auth } from '../../services/auth';
 import { UserButton } from '../user-button/user-button';
+import { Auth } from '../../services/auth';
 
 @Component({
-  selector: 'app-header',
+  selector: 'app-navbar',
   imports: [NavLink, UserButton],
-  templateUrl: './header.html',
-  styleUrl: './header.css',
+  templateUrl: './navbar.html',
+  styleUrl: './navbar.css',
 })
-export class Header {
+export class Navbar {
   auth = inject(Auth);
 }

@@ -1,46 +1,58 @@
 import { Routes } from '@angular/router';
-import { Home } from './home/home';
-import { About } from './about/about';
-import { Login } from './login/login';
-import { Dashboard } from './dashboard/dashboard';
-import { Signup } from './signup/signup';
-import { Account } from './account/account';
-import { Todos } from './todos/todos';
+import { Home } from './pages/home/home';
+import { About } from './pages/about/about';
+import { Login } from './pages/login/login';
+import { Dashboard } from './pages/dashboard/dashboard';
+import { Signup } from './pages/signup/signup';
+import { Account } from './pages/account/account';
+import { authGuard } from './guards/auth-guard';
+import { MainLayout } from './layouts/main-layout/main-layout';
+import { AuthLayout } from './layouts/auth-layout/auth-layout';
+import { NotFound } from './pages/not-found/not-found';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Home,
-    title: 'Home',
+    component: MainLayout,
+    canActivateChild: [authGuard],
+    children: [
+      {
+        path: '',
+        component: Home,
+        title: 'Home',
+      },
+      {
+        path: 'about',
+        component: About,
+        title: 'About Us',
+      },
+      {
+        path: 'account',
+        component: Account,
+        title: 'Account',
+      },
+      {
+        path: 'dashboard',
+        component: Dashboard,
+        title: 'Dashboard',
+      },
+    ],
   },
   {
-    path: 'about',
-    component: About,
-    title: 'About Us',
+    path: '',
+    component: AuthLayout,
+    children: [
+      {
+        path: 'login',
+        component: Login,
+        title: 'Login',
+      },
+      {
+        path: 'signup',
+        component: Signup,
+        title: 'Sign up',
+      },
+    ],
   },
-  {
-    path: 'login',
-    component: Login,
-    title: 'Login',
-  },
-  {
-    path: 'signup',
-    component: Signup,
-    title: 'Sign up',
-  },
-  {
-    path: 'account',
-    component: Account,
-    title: 'Account',
-  },
-  {
-    path: 'dashboard',
-    component: Dashboard,
-    title: 'Dashboard',
-  },
-  {
-    path: 'todos',
-    component: Todos,
-    title: 'ToDos',
-  },
+  { path: '**', component: NotFound },
 ];

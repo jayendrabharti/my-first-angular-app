@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Auth } from '../services/auth';
-import { NavLink } from '../components/nav-link/nav-link';
+import { Auth } from '../../services/auth';
+import { NavLink } from '../../components/nav-link/nav-link';
 
 @Component({
   selector: 'app-dashboard',
